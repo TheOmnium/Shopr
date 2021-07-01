@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<meta charset="UTF-8">
+<title>Shopr</title>
+
+</head>
+<body>
+<div th:insert="fragments/head :: navbar"></div>
+
+<div class="row">
+  <div class="classcontainer col-md-8 offset-2 " style="margin-top: 80px">
+    <table class="table">
+      <thead class="thread-dark">
+      <tr>
+<!--        <th data-field="id" style="text-align:center">Type</th>-->
+        <th data-field="gamegenre" style="text-align:center">Genre</th>
+        <th data-field="title" style="text-align:center">Title</th>
+        <th data-field="price" style="text-align:center">Price ($)</th>
+        <th data-field="publisher" style="text-align:center">Publisher</th>
+        <th data-field="details" style="text-align:center">Show details</th>
+
+
+
+        <!--                <th data-field="Edit" style="text-align:center">Edit</th>-->
+        <!--                <th data-field="Delete" style="text-align:center">Delete </th>-->
+      </tr>
+      <tr th:each="game : ${allGames}">
+<!--        <td th:text="${game.getType()}" style="text-align:center"></td>-->
+        <td th:text="${game.getGameGenre()}" style="text-align:center"></td>
+        <td th:text="${game.getTitle()}" style="text-align:center"></td>
+        <td th:text="${game.getPrice()}" style="text-align:center"></td>
+        <td th:text="${game.getPublisher()}" style="text-align:center"></td>
+<!--          <td style="text-align:center">-->
+<!--              <a th:href="@{/findGame(param1='id',param2='type')}"><span class="material-icons-outlined">visibility</span></a>-->
+<!--          </td>-->
+          <td style="text-align:center">
+              <a th:href="@{/gameDetails/{gameId}(gameId=${game.getId()})}"><span class="material-icons-outlined">details</span></a>
+          </td>
+      </tr>
+      </thead>
+    </table>
+    <a href="addGame" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">New game</a>
+
+</span></a>
+  </div>
+</div>
+<div th:insert="fragments/head :: footer"></div>
+</body>
+</html>

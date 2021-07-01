@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:insert="fragments/head :: navbar"></div>
+
+<form method="post"  th:action="@{/addedLp}" th:object="${newLp}" style="margin-top: 20px">
+    <div>
+        <div class="row">
+            <div class="col-md-4 form-row offset-md-2">
+                <label for="lpGenre"> LP genre</label>
+                <select class="form-control" id="lpGenre" th:field="*{lpGenre}">
+                    <option th:each="lpGenre : ${T(com.example.shopr.domain.LpGenre).values()}"
+                            th:value="${lpGenre}" th:text="${lpGenre}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-row offset-md-2">
+                <label for="title" class="form-label">Title</label>
+                <input id="title" class="form-control" placeholder="Title" name="title" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-row offset-md-2">
+                <label for="price" class="form-label">Price</label>
+                <input id="price" class="form-control" placeholder="Price" name="price" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-row offset-md-2">
+                <label for="producer" class="form-label">Producer</label>
+                <input id="producer" class="form-control" placeholder="Producer" name="producer" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-row offset-md-2">
+                <label for="type" class="form-label">Type</label>
+                <input id="type" class="form-control" placeholder="Type" name="type" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 offset-md-2">
+            <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: black" >Add LP</button>
+        </div>
+    </div>
+</form>
+
+
+<div th:insert="fragments/head :: footer"></div>
+</body>
+</html>
